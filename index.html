@@ -201,13 +201,13 @@
                             <!-- Logos Adicionados -->
                             <div class="flex items-center flex-wrap gap-x-6 gap-y-4 mt-6 pt-6 border-t" style="border-color: var(--border-color);">
                                 <span class="text-sm font-medium w-full sm:w-auto" style="color: var(--text-muted-color);">Affiliated with:</span>
-                                <!-- LOGO DFG CORRIGIDO (SVG) -->
+                                <!-- LOGO DFG CORRIGIDO (Local) -->
                                 <a href="https://www.dfg.de/" target="_blank" title="Deutsche Forschungsgemeinschaft (DFG)">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/DFG-logo-blau.svg" alt="DFG Logo" class="logo-img">
+                                    <img src="images/DFG-logo-blau.svg.png" alt="DFG Logo" class="logo-img">
                                 </a>
-                                <!-- LOGO RUB CORRIGIDO (SVG) -->
+                                <!-- LOGO RUB CORRIGIDO (Local) -->
                                 <a href="https://www.ruhr-uni-bochum.de/en" target="_blank" title="Ruhr-Universität Bochum (RUB)">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Logo_Ruhr-Universit%C3%A4t_Bochum.svg" alt="Ruhr-Universität Bochum (RUB) Logo" class="logo-img">
+                                    <img src="images/logo_rub_blau.png.webp" alt="Ruhr-Universität Bochum (RUB) Logo" class="logo-img">
                                 </a>
                             </div>
                             <!-- Fim dos Logos -->
@@ -224,16 +224,24 @@
                 <!-- Seção: Projetos Anteriores -->
                 <section>
                     <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Former Projects & Roles</h2>
+                    <!-- Card do Mecila (Redesenhado com Imagem) -->
                     <div class="content-card">
-                        <h3 class="text-xl font-bold">Mecila (Maria Sibylla Merian Centre Conviviality-Inequality in Latin America)</h3>
-                        <p class="font-medium mt-1">Role: Academic Manager</p>
-                        <div class="mt-4 space-y-4">
-                             <p>
-                                [Placeholder for a brief description of the role at Mecila, e.g., coordination and research activities.]
-                            </p>
-                            <a href="[Placeholder URL: Link to Mecila Working Paper]" target="_blank">
-                                Read Mecila Working Paper &rarr;
-                            </a>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 items-start">
+                            <div class="sm:col-span-1">
+                                <img src="images/mecila-marca-pref-rgb_2.jpg" alt="Mecila Logo" class="rounded-lg w-full aspect-video sm:aspect-[4/3] object-cover">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <h3 class="text-xl font-bold">Mecila (Maria Sibylla Merian Centre Conviviality-Inequality in Latin America)</h3>
+                                <p class="font-medium mt-1">Role: Academic Manager</p>
+                                <div class="mt-4 space-y-4">
+                                     <p>
+                                        [Placeholder for a brief description of the role at Mecila, e.g., coordination and research activities.]
+                                    </p>
+                                    <a href="[Placeholder URL: Link to Mecila Working Paper]" target="_blank">
+                                        Read Mecila Working Paper &rarr;
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -321,43 +329,56 @@
                 <!-- Seção: Podcast -->
                 <section>
                     <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Podcast: "Sonhos intranquilos"</h2>
+                    <!-- Card do Podcast (Redesenhado com Imagem) -->
                     <div class="content-card">
-                        <p class="mb-4">
-                            [Placeholder for a 1-2 paragraph description of the podcast, its themes (e.g., Kafka, Brazilian literature, interviews with authors), and its public engagement goals.]
-                        </p>
-                        <a href="[Placeholder URL: Spotify/Apple Podcasts/Anchor]" target="_blank">
-                            Listen on [Main Podcast Platform] &rarr;
-                        </a>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 items-start">
+                            <div class="sm:col-span-1">
+                                <img src="images/sonhos vntr.png" alt="Podcast 'Sonhos intranquilos' cover art" class="rounded-lg w-full aspect-square object-cover">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <h3 class="text-xl font-bold hidden">Podcast: "Sonhos intranquilos"</h3>
+                                <p class="mb-4">
+                                    [Placeholder for a 1-2 paragraph description of the podcast, its themes (e.g., Kafka, Brazilian literature, interviews with authors), and its public engagement goals.]
+                                </p>
+                                <a href="[Placeholder URL: Spotify/Apple Podcasts/Anchor]" target="_blank">
+                                    Listen on [Main Podcast Platform] &rarr;
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <!-- Seção: Media & Lectures -->
                 <section>
                     <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Media & Lectures</h2>
+                    <!-- Cards de Mídia (Redesenhados com Imagem) -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Card 1 -->
-                        <div class="content-card">
+                        <div class="content-card flex flex-col">
+                            <img src="images/kafka_podcast.png" alt="Debate on Franz Kafka" class="rounded-lg w-full aspect-video object-cover mb-4">
                             <h3 class="text-lg font-bold">Passaporte: Literatura em casa - Franz Kafka</h3>
                             <p class="text-sm mt-1 mb-3">Goethe-Institut São Paulo (YouTube)</p>
-                            <p class="text-sm mb-4">
+                            <p class="text-sm mb-4 flex-grow">
                                 [Placeholder: Brief description of the event or debate.]
                             </p>
                             <a href="[Placeholder URL: YouTube video]" target="_blank">Watch video &rarr;</a>
                         </div>
                         <!-- Card 2 -->
-                        <div class="content-card">
+                        <div class="content-card flex flex-col">
+                            <img src="images/media-momento-prosa.png" alt="Momento Prosa" class="rounded-lg w-full aspect-video object-cover mb-4 bg-slate-100">
                             <h3 class="text-lg font-bold">Momento Prosa: Tomaz Amorim lê Franz Kafka</h3>
                             <p class="text-sm mt-1 mb-3">Goethe-Institut (YouTube)</p>
-                            <p class="text-sm mb-4">
+                            <p class="text-sm mb-4 flex-grow">
                                 [Placeholder: Brief description of the poetry reading.]
                             </p>
                             <a href="[Placeholder URL: YouTube video]" target="_blank">Watch video &rarr;</a>
                         </div>
                          <!-- Card 3 -->
-                        <div class="content-card">
+                        <div class="content-card flex flex-col">
+                            <img src="images/media-placeholder.png" alt="Media Appearance" class="rounded-lg w-full aspect-video object-cover mb-4 bg-slate-100">
                             <h3 class="text-lg font-bold">[Placeholder: Media Appearance Title]</h3>
                             <p class="text-sm mt-1 mb-3">[Placeholder: Publication/Vehicle, e.g., Folha de S.Paulo]</p>
-                            <p class="text-sm mb-4">
+                            <p class="text-sm mb-4 flex-grow">
                                 [Placeholder: Brief description of the article or interview.]
                             </p>
                             <a href="[Placeholder URL: Article]" target="_blank">Read article &rarr;</a>
@@ -374,7 +395,7 @@
                              <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 items-start">
                                 <div class="sm:col-span-1">
                                     <!-- Alterado para link relativo -->
-                                    <img src="images/event-poster-opening.jpg" alt="Event Poster" class="rounded-lg w-full aspect-video sm:aspect-[4/3] object-cover">
+                                    <img src="images/poster.png" alt="Project Opening Poster" class="rounded-lg w-full aspect-video sm:aspect-[4/3] object-cover">
                                 </div>
                                 <div class="sm:col-span-2">
                                     <h3 class="text-lg font-bold">Project Opening: "Infrastructure: Aesthetics and Care"</h3>
