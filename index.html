@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-researcher">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Tomaz Amorim - Literary Researcher | Principal Investigator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat (Headings) & Noto Serif (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Define a fonte base */
+        body {
+            font-family: 'Noto Serif', serif; /* Alterado para Noto Serif (Estética do Cuidado) */
+        }
+
+        /* Estilo para o interruptor (toggle) */
+        .focus-switch {
+            display: flex;
+            border-radius: 99px;
+            padding: 4px;
+            cursor: pointer;
+            border: 1px solid;
+        }
+        .focus-switch-btn {
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.875rem; /* 14px */
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        /* --- MODO "RESEARCHER" (LIGHT/INFRASTRUCTURE) --- */
+        .theme-researcher {
+            --bg-color: #f8fafc; /* slate-50 */
+            --text-color: #1e293b; /* slate-800 */
+            --text-muted-color: #475569; /* slate-600 */
+            --accent-color: #2563eb; /* blue-600 - "Blueprint Blue" */
+            --accent-hover: #1d4ed8; /* blue-700 */
+            --border-color: #cbd5e1; /* slate-300 */
+            --bg-switch: #ffffff; /* white */
+        }
+        .theme-researcher body {
+            /* ESTÉTICA DA INFRAESTRUTURA: Grid sutil (linhas) */
+            /* background-image: 
+                linear-gradient(to right, rgba(148, 163, 184, 0.1) 1px, transparent 1px), 
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+            background-size: 3rem 3rem; /* 48px grid */
+            /* "INTERRUPÇÃO" SUTIL: Desalinhamento proposital do grid */
+            /* background-position: 7px 3px; */
+
+            /* NOVO FUNDO: Imagem personalizada (fundo.jpeg) */
+            background-image: url('images/fundo.jpeg');
+            background-repeat: repeat; /* A imagem será repetida para preencher o fundo */
+        }
+        .theme-researcher .focus-switch {
+            background-color: var(--bg-switch);
+            border-color: var(--border-color);
+        }
+        .theme-researcher .focus-switch-btn.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+        .theme-researcher .focus-switch-btn:not(.active) {
+            color: var(--text-muted-color);
+        }
+        .theme-researcher .news-marker {
+            color: var(--accent-color);
+        }
+
+        /* --- MODO "SOCIETY" (DARK/CARE) --- */
+        .theme-society {
+            --bg-color: #1e293b; /* slate-800 */
+            --text-color: #e2e8f0; /* slate-200 */
+            --text-muted-color: #94a3b8; /* slate-400 */
+            /* ESTÉTICA DA INFRAESTRUTURA: Cor de "Ferrugem" (rust/earth) */
+            --accent-color: #f59e0b; /* amber-500 */
+            --accent-hover: #d97706; /* amber-600 */
+            --border-color: #334155; /* slate-700 */
+            --bg-switch: #0f172a; /* slate-900 */
+        }
+        .theme-society body {
+             /* Garante que não haja grid no modo "society" */
+             background-image: none;
+        }
+        .theme-society .focus-switch {
+            background-color: var(--bg-switch);
+            border-color: var(--border-color);
+        }
+        .theme-society .focus-switch-btn.active {
+            background-color: var(--accent-color);
+            color: #0f172a; /* Cor de texto escura para contraste no botão claro */
+        }
+        .theme-society .focus-switch-btn:not(.active) {
+            color: var(--text-muted-color);
+        }
+        .theme-society .news-marker {
+            color: var(--accent-color);
+        }
+
+        /* Aplica as variáveis e transições */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif; /* Adicionado Montserrat (Estética da Infraestrutura) */
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        p, li {
+            color: var(--text-muted-color);
+        }
+        a {
+            color: var(--accent-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+        hr {
+            border-top: 1px solid var(--border-color);
+        }
+        .content-card {
+            background-color: var(--bg-switch);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            display: flex; /* Adicionado para flex-col */
+            flex-direction: column; /* Garante que os cards possam usar flex-grow */
+        }
+
+        /* Estilo para Logos Institucionais */
+        .logo-img {
+            max-height: 40px; /* h-10 */
+            width: auto;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+        .logo-img:hover {
+            opacity: 1;
+        }
+        /* Inverte logos escuros (como DFG azul, RUB azul) para branco no modo escuro */
+        .theme-society .logo-img {
+            filter: brightness(0) invert(1); /* Técnica padrão para forçar ao branco */
+            opacity: 0.8; /* Um pouco mais suave no fundo escuro */
+        }
+        .theme-society .logo-img:hover {
+            opacity: 1;
+        }
+
+        /* Estilo para Card de Vídeo/Mídia */
+        .media-card-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-bottom: 1rem; /* mb-4 */
+            aspect-ratio: 16 / 9; /* aspect-video */
+            background-color: #e2e8f0; /* bg-slate-200 */
+        }
+        .media-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .media-card:hover img {
+            transform: scale(1.05);
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 99px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none; /* Não interfere no clique */
+        }
+        .play-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+            margin-left: 3px; /* Pequeno ajuste para centrar o triângulo */
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-4xl mx-auto p-6 md:p-10">
+
+        <!-- CABEÇALHO: Identidade e Interruptor -->
+        <header class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-10">
+            <div>
+                <h1 class="text-3xl font-bold">Dr. Tomaz Amorim</h1>
+                <p class="text-lg" style="color: var(--text-muted-color);">
+                    Literary Researcher | Principal Investigator
+                </p>
+            </div>
+            
+            <!-- O INTERRUPTOR (Focus Switch) -->
+            <div id="focus-toggle" class="focus-switch">
+                <button id="btn-researcher" class="focus-switch-btn active">Researcher</button>
+                <button id="btn-society" class="focus-switch-btn">Society</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- ============================================= -->
+            <!-- CONTEÚDO 1: MODO "RESEARCHER" (INFRASTRUCTURE) -->
+            <!-- ============================================= -->
+            <div id="content-researcher" class="space-y-12">
+
+                <!-- Seção: Sobre (Bio + Foto) -->
+                <section class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    <div class="md:col-span-1 flex justify-center">
+                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQHfziVOrJnIEQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1713293392032?e=1764201600&v=beta&t=elEp12y4LTJoeIkcKIYxSbjULCmhMV2-8-FeWi0AJ8o" alt="Dr. Tomaz Amorim" class="w-48 h-48 md:w-full md:max-w-xs rounded-lg object-cover shadow-md aspect-square">
+                    </div>
+                    <div class="md:col-span-2 space-y-4">
+                        <h2 class="text-2xl font-bold border-b pb-2" style="border-color: var(--border-color);">About</h2>
+                        <p>
+                            [Placeholder for a brief biography (in English). Approx. 2-3 paragraphs. This bio should introduce your academic background (USP, Unicamp, etc.) and transition to your current role as Principal Investigator in Germany.]
+                        </p>
+                        <p>
+                            [Placeholder for second paragraph of bio, perhaps focusing on research interests (Kafka, Benjamin, Oswald de Andrade) and how they connect to the new project.]
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Seção: Projeto Atual -->
+                <section>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Current Project</h2>
+                    <div class="content-card">
+                        <!-- TÍTULO PRINCIPAL DO PROJETO AGORA É UM LINK -->
+                        <a href="https://gepris.dfg.de/gepris/projekt/524611401" target="_blank" rel="noopener">
+                            <h3 class="text-xl font-bold">DFG-Project: "Infrastructure: Aesthetics and Care"</h3>
+                        </a>
+                        <p class="font-medium mt-1">Role: Principal Investigator</p>
+                        <div class="mt-4 space-y-4">
+                             <!-- DESCRIÇÃO DO PROJETO ADICIONADA -->
+                             <p class="text-sm" style="color: var(--text-muted-color);">
+                                <!-- TÍTULO DO SUBPROJETO AGORA É UM LINK -->
+                                <a href="https://gepris.dfg.de/gepris/projekt/558158546" target="_blank" rel="noopener">
+                                    <span class="font-bold" style="color: var(--text-color);">TP 4: Extractivism and Infrastructure in the Brazilian literature</span>
+                                </a>
+                                <br>
+                                The overarching aim of this project is to explore the multifaceted relationship between literary and extractive infrastructures in Brazil, focusing on two key periods: the early stages of high modernism (1900s-1920s) and contemporary literature. By adopting a comparative approach, the project seeks to reveal how literary works from these distinct periods engage with the complexities of extractive landscapes, shedding light on the evolving discourse surrounding colonial legacies, environmental destruction, and alternative perceptions, ways of life, and practices proposed by artists and social collectives. Taking into account both their material and symbolic dimensions, the study pursues the following general objectives: 1) The project aims to investigate the development of literary representations of extractive infrastructures and the "extractive gaze" through close readings. By comparing works from the early 20th century with those of contemporary literature, it will analyze changing modes of representation and conceptions of extractive infrastructures. The research examines how literary works have contributed to constructing an exploitative perspective on land and resources, and how these works have reflected, resisted, and reinforced prevailing ideologies. In doing so, it also considers the literary system itself as a type of infrastructure. 2) The project will analyze the forms and aesthetics that Brazilian literature, both modern and contemporary, has developed to raise awareness of environmental destruction caused by extractivism and to provoke emotional or affective responses. Through textual analysis, it will examine how authors employ specific linguistic and aesthetic strategies to confront readers both emotionally and cognitively with the consequences of extractivism and climate change, and to overcome various forms of eco-paralysis, eco-grief, or eco-guilt. 3. Additionally, the project will explore how contemporary literature, particularly by Indigenous and Quilombola authors, (re)constructs alternative worldviews that challenge dominant extractive narratives and propose different ways of being in relation to the land. It will investigate how these works mobilize diverse epistemological and ontological perspectives, foregrounding relationality, reciprocity, and the plurality of worlds. These works are understood as infrastructures for world-making, extending beyond the literary text to reorganize readers' perceptions through new forms and extraliterary references, thus enabling or even creating experiences with other worlds.
+                            </p>
+                            <!-- Logos Adicionados -->
+                            <div class="flex items-center flex-wrap gap-x-6 gap-y-4 mt-6 pt-6 border-t" style="border-color: var(--border-color);">
+                                <span class="text-sm font-medium w-full sm:w-auto" style="color: var(--text-muted-color);">Affiliated with:</span>
+                                <!-- LOGO DFG CORRIGIDO (Local) -->
+                                <a href="https://www.dfg.de/" target="_blank" rel="noopener" title="Deutsche Forschungsgemeinschaft (DFG)">
+                                    <img src="images/DFG-logo-blau.svg.png" alt="DFG Logo" class="logo-img">
+                                </a>
+                                <!-- LOGO RUB CORRIGIDO (Local) -->
+                                <a href="https://www.ruhr-uni-bochum.de/en" target="_blank" rel="noopener" title="Ruhr-Universität Bochum (RUB)">
+                                    <img src="images/logo_rub_blau.png.webp" alt="Ruhr-Universität Bochum (RUB) Logo" class="logo-img">
+                                </a>
+                            </div>
+                            <!-- Fim dos Logos -->
+                            <!-- Links de Mídia do Projeto -->
+                            <div class="mt-4 pt-4 border-t" style="border-color: var(--border-color);">
+                                <a href="https://bsky.app/profile/infra-aesthetics.bsky.social" target="_blank" rel="noopener" class="block">
+                                    View project on BlueSky &rarr;
+                                </a>
+                                 <a href="[Placeholder URL: Project Instagram]" target="_blank" rel="noopener" class="block pt-2">
+                                    Follow project on Instagram &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção: Projetos Anteriores -->
+                <section>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Former Projects & Roles</h2>
+                    <!-- Card do Mecila (Redesenhado com Imagem) -->
+                    <div class="content-card">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 items-start">
+                            <!-- Imagem do Mecila com tamanho reduzido e centralizada -->
+                            <div class="sm:col-span-1 flex justify-center items-center">
+                                <img src="images/mecila-marca-pref-rgb_2.jpg" alt="Mecila Logo" class="rounded-lg max-w-[150px] object-contain">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <h3 class="text-xl font-bold">Mecila (Maria Sibylla Merian Centre Conviviality-Inequality in Latin America)</h3>
+                                <p class="font-medium mt-1">Role: Academic Manager</p>
+                                <div class="mt-4 space-y-4">
+                                     <p>
+                                        [Placeholder for a brief description of the role at Mecila, e.g., coordination and research activities.]
+                                    </p>
+                                    <a href="[Placeholder URL: Link to Mecila Working Paper]" target="_blank" rel="noopener">
+                                        Read Mecila Working Paper &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção: Notícias & Eventos (Acadêmicos) - NOVO LAYOUT -->
+                <section>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">News & Events</h2>
+                    <div class="content-card">
+                        <ul class="space-y-4">
+                            <!-- Item de Notícia 1 -->
+                            <li class="flex items-start">
+                                <span class="news-marker text-lg font-bold mr-3 mt-1">•</span>
+                                <div>
+                                    <!-- O <a> agora envolve o título -->
+                                    <a href="https://www.dfg.de/en/service/press/press-releases/2025/press-release-no-19" target="_blank" rel="noopener">
+                                        <h3 class="text-lg font-bold">New DFG Research Group "Infrastructure: Aesthetics and Care"</h3>
+                                    </a>
+                                    <p class="text-sm mt-1">DFG Press Release (July 2025)</p>
+                                </div>
+                            </li>
+                            <!-- Item de Notícia 2 -->
+                            <li class="flex items-start">
+                                <span class="news-marker text-lg font-bold mr-3 mt-1">•</span>
+                                <div>
+                                    <!-- O <a> agora envolve o título -->
+                                    <a href="https://news.rub.de/wissenschaft/2025-07-02-neue-forschungsgruppe-infrastruktur-aesthetik-und-versorgung" target="_blank" rel="noopener">
+                                        <h3 class="text-lg font-bold">Neue Forschungsgruppe an der RUB</h3>
+                                    </a>
+                                    <p class="text-sm mt-1">Ruhr-Universität Bochum (July 2025)</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Seção: Publicações -->
+                <section>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Selected Publications</h2>
+                    <ul class="space-y-5">
+                        <li>
+                            <span class="font-semibold">[Book]</span> Amorim, T. (Year). <span class="italic">[Book Title Placeholder]</span>. [Publisher Placeholder].
+                        </li>
+                        <li>
+                            <span class="font-semibold">[Article]</span> Amorim, T. (Year). "[Article Title Placeholder]." <span class="italic">[Journal Name Placeholder]</span>, Vol(Issue), pp. XX-XX.
+                        </li>
+                        <li>
+                            <span class="font-semibold">[Chapter]</span> Amorim, T. (Year). "[Chapter Title Placeholder]." In [Editor(s) Name(s)] (Eds.), <span class="italic">[Book Title Placeholder]</span> (pp. XX-XX). [Publisher Placeholder].
+                        </li>
+                        <li>
+                            <span class="font-semibold">[Article]</span> Amorim, T. (Year). "[Article Title Placeholder]." <span class="italic">[Journal Name Placeholder]</span>, Vol(Issue), pp. XX-XX.
+                        </li>
+                    </ul>
+                    <p class="mt-4">
+                        [A complete list of publications is available on my ORCID and Lattes profiles.]
+                    </p>
+                </section>
+
+                <!-- Seção: Perfis Acadêmicos -->
+                <section>
+                     <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Academic Profiles</h2>
+                     <div class="flex flex-wrap gap-4">
+                        <!-- LINKS DE PERFIL ADICIONADOS -->
+                        <a href="https://orcid.org/0000-0001-5617-4323" target="_blank" rel="noopener" class="font-medium">ORCID</a>
+                        <a href="http://lattes.cnpq.br/4805211374545553" target="_blank" rel="noopener" class="font-medium">Lattes</a>
+                        <a href="https://mecila.academia.edu/TomazAmorimIzabel" target="_blank" rel="noopener" class="font-medium">Academia.edu</a>
+                        <!-- LINKEDIN ADICIONADO -->
+                        <a href="https://www.linkedin.com/in/tomaz-amorim-a48329226/" target="_blank" rel="noopener" class="font-medium">LinkedIn</a>
+                     </div>
+                </section>
+
+            </div>
+
+            <!-- ======================================= -->
+            <!-- CONTEÚDO 2: MODO "SOCIETY" (CARE/MEDIA) -->
+            <!-- ======================================= -->
+            <div id="content-society" class="hidden space-y-12">
+
+                <!-- Seção: Podcasts -->
+                <section>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Podcasts</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card 1: Sonhos intranquilos -->
+                        <div class="content-card">
+                            <img src="images/sonhos.jpeg" alt="Podcast 'Sonhos intranquilos' cover art" class="rounded-lg w-full aspect-square object-cover mb-4">
+                            <h3 class="text-xl font-bold">Sonhos intranquilos</h3>
+                            <p class="text-sm my-2">[Interviews with Brazilian writers, in Portuguese]</p>
+                            <a href="https://open.spotify.com/show/1l4m4oAB1CMG90hDb0W80r" target="_blank" rel="noopener" class="mt-auto">
+                                Listen on Spotify &rarr;
+                            </a>
+                        </div>
+                        <!-- Card 2: Kafka Course -->
+                        <div class="content-card">
+                            <img src="images/kafka.jpeg" alt="Kafka Course cover art" class="rounded-lg w-full aspect-square object-cover mb-4">
+                            <h3 class="text-xl font-bold">Introdução à obra de Franz Kafka</h3>
+                            <p class="text-sm my-2">[Undergraduate full course taught at Unicamp on Kafka]</p>
+                            <!-- <a href="#" class="mt-auto">Learn more &rarr;</a> -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção: YouTube Channel & Media -->
+                <section>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">YouTube Channel & Media</h2>
+                    <!-- Link Principal do Canal -->
+                    <div class="content-card text-center mb-6">
+                        <a href="https://www.youtube.com/@tomazamorim" target="_blank" rel="noopener" class="text-xl font-bold">
+                            Visit my YouTube Channel @tomazamorim &rarr;
+                        </a>
+                        <p class="text-sm mt-2">See below for selected highlights and lectures.</p>
+                    </div>
+                    
+                    <!-- Grid de Destaques do YouTube -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card 1: Kafka Debate -->
+                        <a href="[Placeholder URL: YouTube video]" target="_blank" rel="noopener" class="content-card media-card group">
+                            <div class="media-card-image">
+                                <img src="images/kafka_podcast.png" alt="Debate on Franz Kafka">
+                                <div class="play-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-bold">Passaporte: Literatura em casa - Franz Kafka</h3>
+                            <p class="text-sm mt-1">Goethe-Institut São Paulo (YouTube)</p>
+                        </a>
+                        <!-- Card 2: Momento Prosa -->
+                        <a href="[Placeholder URL: YouTube video]" target="_blank" rel="noopener" class="content-card media-card group">
+                            <div class="media-card-image">
+                                <img src="images/media-momento-prosa.png" alt="Momento Prosa">
+                                <div class="play-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-bold">Momento Prosa: Tomaz Amorim lê Franz Kafka</h3>
+                            <p class="text-sm mt-1">Goethe-Institut (YouTube)</p>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Seção: Notícias & Eventos (Públicos) - NOVO LAYOUT -->
+                <section>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">News & Events</h2>
+                    <div class="content-card">
+                         <ul class="space-y-4">
+                            <!-- Item de Evento 1 -->
+                             <li class="flex items-start">
+                                <span class="news-marker text-lg font-bold mr-3 mt-1">•</span>
+                                <div>
+                                    <!-- O <a> agora envolve o título -->
+                                    <a href="https://www.instagram.com/p/DPeLP-0DNSn/?img_index=1" target="_blank" rel="noopener">
+                                        <h3 class="text-lg font-bold">Project Opening: "Infrastructure: Aesthetics and Care"</h3>
+                                    </a>
+                                    <p class="text-sm mt-1">Ruhr-Universität Bochum (Date TBD)</p>
+                                </div>
+                            </li>
+                             <!-- Item de Evento 2 (Placeholder) -->
+                             <li class="flex items-start">
+                                <span class="news-marker text-lg font-bold mr-3 mt-1">•</span>
+                                <div>
+                                    <!-- O <a> agora envolve o título -->
+                                    <a href="#" target="_blank" rel="noopener">
+                                        <h3 class="text-lg font-bold">[Placeholder: Public Lecture/Event Title]</h3>
+                                    </a>
+                                    <p class="text-sm mt-1">[Placeholder: Event Venue/Platform]</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Seção: Poesia (NOVO LAYOUT DE GRID) -->
+                <section>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Poetry</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Livro 1: Meia lua soco -->
+                        <div class="content-card">
+                            <img src="images/meialua.jpeg" alt="Book cover: Meia lua soco" class="rounded-lg w-full aspect-[3/4] object-cover mb-4">
+                            <h3 class="text-lg font-bold italic">"Meia lua soco"</h3>
+                            <p class="text-sm my-2">(Primata, 2020)</p>
+                            <a href="https://www.editoraprimata.com/meia-lua-soco-de-tomaz-amorim-izabel/p" target="_blank" rel="noopener" class="mt-auto">
+                                View at Editora Primata &rarr;
+                            </a>
+                        </div>
+
+                        <!-- Livro 2: Plástico Pluma -->
+                        <div class="content-card">
+                            <img src="images/plastico.jpeg" alt="Book cover: Plástico Pluma" class="rounded-lg w-full aspect-[3/4] object-cover mb-4">
+                            <h3 class="text-lg font-bold italic">"Plástico Pluma"</h3>
+                            <p class="text-sm my-2">(Urutau, 2018)</p>
+                            <a href="https://editoraurutau.com/titulo/plastico-pluma" target="_blank" rel="noopener" class="mt-auto">
+                                View at Editora Urutau &rarr;
+                            </a>
+                        </div>
+
+                        <!-- Livro 3: Marte atacado (Vídeo) -->
+                        <a href="https://www.youtube.com/watch?v=AuSN47Ueec0" target="_blank" rel="noopener" class="content-card media-card group">
+                            <div class="media-card-image aspect-[3/4]"> <!-- Proporção de capa de livro -->
+                                <!-- Placeholder visual para o vídeo -->
+                                <div class="w-full h-full bg-slate-700 flex items-center justify-center text-center p-4">
+                                    <span style="color: var(--text-muted-color);">Video-Poem</span>
+                                </div>
+                                <div class="play-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-bold italic">"Marte atacado"</h3>
+                            <p class="text-sm my-2">(Mormaço, 2023)</p>
+                            <span class="mt-auto">Watch video-poem &rarr;</span> <!-- O <a> já está no card todo -->
+                        </a>
+
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- RODAPÉ -->
+        <footer class="mt-20 pt-8 border-t" style="border-color: var(--border-color);">
+            <div class="flex flex-col sm:flex-row justify-between gap-6 text-sm" style="color: var(--text-muted-color);">
+                <!-- Contato -->
+                <div class="space-y-2">
+                    <h4 class="font-semibold" style="color: var(--text-color);">Contact</h4>
+                    <p>
+                        <!-- LINKEDIN ATUALIZADO NO RODAPÉ -->
+                        <a href="https://www.linkedin.com/in/tomaz-amorim-a48329226/" target="_blank" rel="noopener">LinkedIn</a>
+                    </p>
+                    <p>
+                        <a href="mailto:[Placeholder: institutional.email@uni-X.de]">[Institutional Email Placeholder]</a>
+                    </p>
+                </div>
+                
+                <!-- Idiomas (Futuro) -->
+                <div class="space-y-2">
+                    <h4 class="font-semibold" style="color: var(--text-color);">Language</h4>
+                    <p>
+                        <span class="font-bold">English (EN)</span> 
+                        <span class="mx-1">|</span> 
+                        <span class="opacity-50">Deutsch (DE)</span>
+                        <span class="mx-1">|</span> 
+                        <span class="opacity-50">Português (PT)</span>
+                    </p>
+                </div>
+
+                <!-- Copyright -->
+                <div>
+                    <p>&copy; <span id="current-year"></span> Dr. Tomaz Amorim</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('focus-toggle');
+            const btnResearcher = document.getElementById('btn-researcher');
+            const btnSociety = document.getElementById('btn-society');
+            const contentResearcher = document.getElementById('content-researcher');
+            const contentSociety = document.getElementById('content-society');
+            const htmlElement = document.documentElement;
+
+            // Função para aplicar o tema e o conteúdo
+            function applyFocus(mode) {
+                if (mode === 'society') {
+                    // Ativar Modo "Society" (Dark/Care)
+                    htmlElement.classList.add('theme-society');
+                    htmlElement.classList.remove('theme-researcher');
+                    
+                    btnSociety.classList.add('active');
+                    btnResearcher.classList.remove('active');
+                    
+                    contentSociety.classList.remove('hidden');
+                    contentResearcher.classList.add('hidden');
+                    
+                    localStorage.setItem('focusMode', 'society');
+                } else {
+                    // Ativar Modo "Researcher" (Light/Infrastructure)
+                    htmlElement.classList.add('theme-researcher');
+                    htmlElement.classList.remove('theme-society');
+
+                    btnResearcher.classList.add('active');
+                    btnSociety.classList.remove('active');
+
+                    contentResearcher.classList.remove('hidden');
+                    contentSociety.classList.add('hidden');
+                    
+                    localStorage.setItem('focusMode', 'researcher');
+                }
+            }
+
+            // Adiciona os event listeners aos botões
+            btnResearcher.addEventListener('click', () => applyFocus('researcher'));
+            btnSociety.addEventListener('click', () => applyFocus('society'));
+
+            // Verifica o modo salvo no localStorage ao carregar a página
+            const savedMode = localStorage.getItem('focusMode') || 'researcher';
+            applyFocus(savedMode);
+
+            // Atualiza o ano no rodapé
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </sCRIPT>
+
+</body>
+</html>
