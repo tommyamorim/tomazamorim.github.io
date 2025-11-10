@@ -530,64 +530,42 @@
                     <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">News & Events</h2>
                     <div class="content-card">
                          <ul class="space-y-4">
-                            <!-- Item de Evento 1 -->
+                            <!-- Item de Evento 1 (CORRIGIDO) -->
                              <li class="flex items-start">
+                                <span class="news-marker text-lg font-bold mr-3 mt-1">•</span>
+                                <div>
+                                     <!-- O <a> agora envolve o título. O link é para o pôster. -->
+                                     <a href="images/poster.png?v=1.1" target="_blank" rel="noopener">
+                                        <h3 class="text-lg font-bold">Project Opening: "Infrastructure: Aesthetics and Care"</h3>
                                      </a>
                                      <p class="text-sm mt-1">Ruhr-Universität Bochum (Date TBD)</p>
                                  </div>
                              </li>
                              <!-- NOVO ITEM: Lançamento do Livro Uneafro -->
-                             <li class="flex items-start">
-                                <span class="news-marker text-lg font-bold mr-3 mt-1">•</span>
-                                <div>
-                                    <!-- O <a> agora envolve o título -->
-                                    <a href="https://rosalux.org.br/uneafro-brasil-12-anos-de-luta/" target="_blank" rel="noopener">
-                                        <h3 class="text-lg font-bold">Book Launch: "Uneafro Brasil – 12 anos de luta"</h3>
-                                    </a>
-                                    <p class="text-sm mt-1">Rosa-Luxemburg-Stiftung (PT-BR)</p>
-                                </div>
-                            </li>
-                             <!-- Item de Evento 2 (Placeholder) -->
+                                     <p class="text-sm mt-1">Rosa-Luxemburg-Stiftung (PT-BR)</p>
+                                 </div>
+                             </li>
+                             <!-- Item de Evento 2 (Placeholder) - CORRIGIDO -->
                              <li class="flex items-start">
                                 <span class="news-marker text-lg font-bold mr-3 mt-1">•</span>
                                 <div>
                                     <!-- O <a> agora envolve o título -->
                                     <a href="#" target="_blank" rel="noopener">
                                         <h3 class="text-lg font-bold">[Placeholder: Public Lecture/Event Title]</h3>
-                                    </a>
-                                    <p class="text-sm mt-1">[Placeholder: Event Venue/Platform]</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
+                                    </a> <!-- <- TAG FALTANTE CORRIGIDA -->
+                                    <p class="text-sm mt-1">[Placeholder: Event Venue/Platform]</p> <!-- <- LINHA FALTANTE CORRIGIDA -->
+                                </div> <!-- <- TAG FALTANTE CORRIGIDA -->
+                             </li> <!-- <- TAG FALTANTE CORRIGIDA -->
+                         </ul>
+                    </div> <!-- <- TAG FALTANTE CORRIGIDA -->
+                </section> <!-- <- TAG FALTANTE CORRIGIDA -->
 
-                <!-- Seção: Poesia (NOVO LAYOUT DE GRID) -->
+                <!-- Seção: Poesia (ORDEM E LINKS ATUALIZADOS) -->
                 <section>
                     <h2 class="text-2xl font-bold border-b pb-2 mb-6" style="border-color: var(--border-color);">Poetry</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         
-                        <!-- Livro 1: Meia lua soco -->
-                        <div class="content-card">
-                            <img src="images/meialua.jpeg?v=1.1" alt="Book cover: Meia lua soco" class="rounded-lg w-full aspect-[3/4] object-cover mb-4">
-                            <h3 class="text-lg font-bold italic">"Meia lua soco"</h3>
-                            <p class="text-sm my-2">(Primata, 2020)</p>
-                            <a href="https://www.editoraprimata.com/meia-lua-soco-de-tomaz-amorim-izabel/p" target="_blank" rel="noopener" class="mt-auto">
-                                View at Editora Primata &rarr;
-                            </a>
-                        </div>
-
-                        <!-- Livro 2: Plástico Pluma -->
-                        <div class="content-card">
-                            <img src="images/plastico.jpeg?v=1.1" alt="Book cover: Plástico Pluma" class="rounded-lg w-full aspect-[3/4] object-cover mb-4">
-                            <h3 class="text-lg font-bold italic">"Plástico Pluma"</h3>
-                            <p class="text-sm my-2">(Urutau, 2018)</p>
-                            <a href="https://editoraurutau.com/titulo/plastico-pluma" target="_blank" rel="noopener" class="mt-auto">
-                                View at Editora Urutau &rarr;
-                            </a>
-                        </div>
-
-                        <!-- Livro 3: Marte atacado (Vídeo) (AGORA ABRE MODAL) -->
+                        <!-- Livro 1: Marte atacado (Movido para primeiro) -->
                         <a href="https://www.youtube.com/watch?v=AuSN47Ueec0" 
                            class="content-card media-card group cursor-pointer js-video-modal-trigger"
                            data-video-id="AuSN47Ueec0"
@@ -605,6 +583,34 @@
                             <p class="text-sm my-2">(Mormaço, 2023)</p>
                             <span class="mt-auto">Watch video-poem &rarr;</span> <!-- O <a> já está no card todo -->
                         </a>
+
+                        <!-- Livro 2: Meia lua soco (Movido para segundo, links alterados) -->
+                        <div class="content-card">
+                            <!-- Imagem agora é um link -->
+                            <a href="https://www.editoraprimata.com/meia-lua-soco-de-tomaz-amorim-izabel/p" target="_blank" rel="noopener">
+                                <img src="images/meialua.jpeg?v=1.1" alt="Book cover: Meia lua soco" class="rounded-lg w-full aspect-[3/4] object-cover mb-4">
+                            </a>
+                            <h3 class="text-lg font-bold italic">"Meia lua soco"</h3>
+                            <!-- Nome da editora agora é um link -->
+                            <p class="text-sm my-2">
+                                (<a href="https://www.editoraprimata.com/meia-lua-soco-de-tomaz-amorim-izabel/p" target="_blank" rel="noopener" class="hover:underline">Primata</a>, 2020)
+                            </p>
+                            <!-- Link de texto "View at..." removido -->
+                        </div>
+
+                        <!-- Livro 3: Plástico Pluma (Movido para terceiro, links alterados) -->
+                        <div class="content-card">
+                             <!-- Imagem agora é um link -->
+                            <a href="https://editoraurutau.com/titulo/plastico-pluma" target="_blank" rel="noopener">
+                                <img src="images/plastico.jpeg?v=1.1" alt="Book cover: Plástico Pluma" class="rounded-lg w-full aspect-[3/4] object-cover mb-4">
+                            </a>
+                            <h3 class="text-lg font-bold italic">"Plástico Pluma"</h3>
+                             <!-- Nome da editora agora é um link -->
+                            <p class="text-sm my-2">
+                                (<a href="https://editoraurutau.com/titulo/plastico-pluma" target="_blank" rel="noopener" class="hover:underline">Urutau</a>, 2018)
+                            </p>
+                            <!-- Link de texto "View at..." removido -->
+                        </div>
 
                     </div>
                 </section>
